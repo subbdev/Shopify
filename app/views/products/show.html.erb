@@ -1,0 +1,53 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @product.title %>
+</p>
+
+<p>
+  <strong>Body html:</strong>
+  <%= @product.body_html %>
+</p>
+
+<p>
+  <strong>Vendor:</strong>
+  <%= @product.vendor %>
+</p>
+
+<p>
+  <strong>Product type:</strong>
+  <%= @product.product_type %>
+</p>
+
+<h2>Add a Image:</h2>
+<%= form_for([@product, @product.images.build]) do |f| %>
+
+    <div class="field">
+      <%= f.label :attachment %><br>
+      <%= f.file_field :attachment %>
+    </div>
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+<% end %>
+
+<h2>Images</h2>
+<% if @product.images.length > 0 %>
+    <% @product.images.each do |image| %>
+        <p>
+          <strong>Attachment:</strong>
+          <%= image.attachment %>
+        </p>
+
+        <p>
+          <strong>Product:</strong>
+          <%= image.product.title %>
+        </p>
+    <% end %>
+<% else %>
+    <h3>No comments have been posted yet.</h3>
+<% end %>
+
+<%= link_to 'Edit', edit_product_path(@product) %> |
+<%= link_to 'Back', products_path %>

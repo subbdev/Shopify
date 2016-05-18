@@ -1,0 +1,5 @@
+This is the MedXCom call routing and communications system for medical professionals.
+
+INSTALLATION
+Use rake install to copy files under the install folder to the correct directories. 
+

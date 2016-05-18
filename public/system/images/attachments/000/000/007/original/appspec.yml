@@ -1,0 +1,22 @@
+version: 0.0
+os: linux
+files:
+  - source: /
+    destination: /opt/physician
+permissions:
+  - object: /opt/physician
+    pattern: "**"
+    owner: medx
+    group: medx
+    type:
+      - directory
+      - file
+hooks:
+  ApplicationStop:
+    - location: DeploymentScripts/stop_server.sh
+      timeout: 300
+      runas: root
+  ApplicationStart:
+    - location: DeploymentScripts/start_server.sh
+      timout: 300
+      runas: root
